@@ -135,7 +135,7 @@ GS_ORDER = ["GS1", "GS2", "GS3"]
 
 # Mon=0 ... Sun=6 (Python's weekday())
 MARKS_BY_WEEKDAY = {
-    6: 15,  # Monday
+    0: 10,  # Monday
     1: 10,  # Tuesday
     2: 10,  # Wednesday
     3: 15,  # Thursday
