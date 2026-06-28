@@ -40,11 +40,11 @@ jobs:
         id: which_job
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "script=scripts/${{ github.event.inputs.job }}.py" >> "$GITHUB_OUTPUT"
+            echo "script=${{ github.event.inputs.job }}.py" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "30 0 * * *" ]; then
-            echo "script=scripts/post_question.py" >> "$GITHUB_OUTPUT"
+            echo "script=post_question.py" >> "$GITHUB_OUTPUT"
           else
-            echo "script=scripts/post_answer.py" >> "$GITHUB_OUTPUT"
+            echo "script=post_answer.py" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run bot script
