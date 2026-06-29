@@ -3,10 +3,10 @@ name: UPSC PYQ Telegram Bot
 on:
   schedule:
     # IST = UTC+5:30. GitHub Actions cron is in UTC.
-    # 6:00 AM IST  -> 00:30 UTC
-    - cron: "30 0 * * *"
-    # 9:00 PM IST  -> 15:30 UTC
-    - cron: "30 15 * * *"
+    # 5:00 AM IST  -> 23:30 UTC (previous day)
+    - cron: "30 23 * * *"
+    # 7:50 PM IST  -> 14:20 UTC
+    - cron: "20 14 * * *"
   workflow_dispatch:
     inputs:
       job:
@@ -41,7 +41,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "script=${{ github.event.inputs.job }}.py" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "30 0 * * *" ]; then
+          elif [ "${{ github.event.schedule }}" = "30 23 * * *" ]; then
             echo "script=post_question.py" >> "$GITHUB_OUTPUT"
           else
             echo "script=post_answer.py" >> "$GITHUB_OUTPUT"
